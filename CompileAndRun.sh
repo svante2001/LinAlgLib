@@ -1,2 +1,2 @@
-gcc main.c Core/Matrix.c
+gcc main.c Core/Matrix.c MatrixOperations/MatrixArithmetics.c
 ./a.out
