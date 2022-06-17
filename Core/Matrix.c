@@ -28,6 +28,16 @@ void SetEntry(Matrix* m, int row, int col, double value) {
     m->entry[row-1][col-1] = value;
 }
 
+Matrix* SetMatrix(double* arr, int rows, int cols) {
+    Matrix* m = CreateMatrix(rows, cols);
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            SetEntry(m, i+1, j+1, arr[cols * i+j]);
+        }
+    }
+    return m;
+}
+
 void PrintMatrix(Matrix* m) {
     for (int i = 0; i < m->rows; i++) {
         printf("\n");
