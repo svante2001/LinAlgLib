@@ -13,8 +13,8 @@ Matrix* CreateMatrix(int n_rows, int m_cols) {
     matrix->rows = n_rows;
     matrix->cols = m_cols;
     double** entry = malloc(sizeof(double*) * n_rows); 
-    for(int x = 0; x < n_rows; x++){
-        entry[x] = calloc(m_cols, sizeof(double));
+    for(int i = 0; i < n_rows; i++){
+        entry[i] = calloc(m_cols, sizeof(double));
     }
     matrix->entry = entry;
     return matrix;
