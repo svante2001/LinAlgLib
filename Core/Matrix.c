@@ -20,6 +20,14 @@ Matrix* CreateMatrix(int n_rows, int m_cols) {
     return matrix;
 }
 
+int Rows(Matrix* m) {
+    return m->rows;
+}
+
+int Cols(Matrix* m) {
+    return m->cols;
+}
+
 double GetEntry(Matrix* m, int row, int col) {
     return m->entry[row-1][col-1];
 }
