@@ -1,0 +1,1 @@
+Matrix* MatrixProduct(Matrix* a, Matrix* b);
