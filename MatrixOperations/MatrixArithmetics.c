@@ -1,5 +1,4 @@
 #include "../Core/Matrix.h"
-#include <stdio.h>
 
 Matrix* MatrixProduct(Matrix* a, Matrix* b) {
     int n = Cols(a);
@@ -20,3 +19,16 @@ Matrix* MatrixProduct(Matrix* a, Matrix* b) {
     return c;
 }
 
+Matrix* TransposeMatrix (Matrix* m) {
+    int rows = Rows(m);
+    int cols = Cols(m);
+    
+    Matrix* mt = CreateMatrix(cols, rows);
+
+    for (int i = 0; i < cols; i++) {
+        for (int j = 0; j < rows; j++) {
+            SetEntry(mt, i+1, j+1, GetEntry(m, j+1, i+1));
+        }
+    }
+    return mt;
+}
