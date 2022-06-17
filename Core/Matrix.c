@@ -20,6 +20,14 @@ Matrix* CreateMatrix(int n_rows, int m_cols) {
     return matrix;
 }
 
+double GetEntry(Matrix* m, int row, int col) {
+    return m->entry[row-1][col-1];
+}
+
+void SetEntry(Matrix* m, int row, int col, double value) {
+    m->entry[row-1][col-1] = value;
+}
+
 void PrintMatrix(Matrix* m) {
     for (int i = 0; i < m->rows; i++) {
         printf("\n");
