@@ -11,11 +11,12 @@
 `SetEntry(Matrix* m, int row, int col, double value);`
 
 ### Setting a matrix:
-`SetMatrix(double* arr, int rows, int cols)`
+`SetMatrix(double* arr, int rows, int cols);`
+<br />
 In-code example:
 ```c
 double a[] = { 1.0, 2.0, 3.0, 
-			   4.0, 5.0, 6.0 };
+4.0, 5.0, 6.0 };
 
 Matrix* m = SetMatrix(a, 2, 3);
 ```
