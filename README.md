@@ -17,6 +17,12 @@ to compiling and running the examples and this script should be run in the `Exam
 ### Creating a matrix:
 `Matrix* m = CreateMatrix(rows, cols);`
 
+### Getting the row size
+`int r = Rows(Matrix* m);`
+
+### Getting the column size
+`int c = Cols(Matrix* m);`
+
 ### Getting an entry:
 `double d = GetEntry(Matrix* m, int row, int col);`
 
@@ -24,7 +30,14 @@ to compiling and running the examples and this script should be run in the `Exam
 `SetEntry(Matrix* m, int row, int col, double value);`
 
 ### Setting a matrix:
-`SetMatrix(double* arr, int rows, int cols);`
+`Matrix* m = SetMatrix(double* arr, int rows, int cols);`
 
 ### Printing a matrix
 `PrintMatrix(Matrix* m);`
+
+## Matrix operations
+### Matrix product
+`Matrix* m = MatrixProduct(Matrix* a, Matrix* b);`
+
+### Transpose matrix
+`Matrix* m = TransposeMatrix (Matrix* m);`
