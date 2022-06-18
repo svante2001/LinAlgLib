@@ -11,7 +11,9 @@ $$
 
 ## Examples
 A collection of examples can be found in the `Examples` directory. NB: a shell script is present
-to compiling and running the examples and this script should be run in the `Examples` directory.
+to compiling and running the examples and this script should be run in the `Examples` directory as 
+follows:
+`,/RunExample.sh [ExampleFile].c`
 
 ## Core - matrix
 ### Creating a matrix:
