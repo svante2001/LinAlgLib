@@ -1,4 +1,17 @@
 # LinAlgLib
+This library is 1 indexed which means the $2 \times 2$ entry of the matrix below is 5.
+
+$$
+\left(\begin{array}{cc} 
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+\end{array}\right)
+$$ 
+
+## Examples
+A collection of examples can be found in the `Examples` directory. NB: a shell script is present
+to compiling and running the examples and this script should be run in the `Examples` directory.
 
 ## Core - matrix
 ### Creating a matrix:
@@ -12,13 +25,6 @@
 
 ### Setting a matrix:
 `SetMatrix(double* arr, int rows, int cols);`
-<br />
-In-code example:
-```c
-double a[] = { 1.0, 2.0, 3.0, 
-4.0, 5.0, 6.0 };
 
-Matrix* m = SetMatrix(a, 2, 3);
-```
 ### Printing a matrix
 `PrintMatrix(Matrix* m);`
