@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "./../Core/Matrix.h"
-#include "./../MatrixOperations/MatrixArithmetics.h"
+#include "./../MatrixOperations/MatrixOperations.h"
 
 int main() {
     double a[] = { 1.0, 2.0, 3.0, 

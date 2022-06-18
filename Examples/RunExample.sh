@@ -1,4 +1,5 @@
 file=$1
 
-gcc "$file" ./../Core/Matrix.c ./../MatrixOperations/MatrixArithmetics.c
+rm -rf a.out
+gcc "$file" ./../Core/Matrix.c ./../MatrixOperations/MatrixOperations.c
 ./a.out
