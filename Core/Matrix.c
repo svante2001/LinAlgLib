@@ -12,7 +12,7 @@ Matrix* CreateMatrix(int n_rows, int m_cols) {
     struct Matrix* matrix = malloc(sizeof(Matrix));
     matrix->rows = n_rows;
     matrix->cols = m_cols;
-    double** entry = malloc(sizeof(double*) * n_rows); 
+    double** entry = calloc(n_rows, sizeof(double*));
     for(int i = 0; i < n_rows; i++){
         entry[i] = calloc(m_cols, sizeof(double));
     }
