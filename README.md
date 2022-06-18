@@ -14,7 +14,7 @@ A collection of examples can be found in the `Examples` directory. NB: a shell s
 to compiling and running the examples and this script should be run in the `Examples` directory as 
 follows:
 <br />
-`,/RunExample.sh [ExampleFile].c`
+`./RunExample.sh [ExampleFile].c`
 
 ## Core - matrix
 ### Creating a matrix:
