@@ -7,13 +7,13 @@ Matrix* MatrixProduct(Matrix* a, Matrix* b) {
     
     Matrix* c = CreateMatrix(m, p);
 
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < p; j++) {
+    for (int i = 1; i <= m; i++) {
+        for (int j = 1; j <= p; j++) {
             double sum = 0;
-            for (int k = 0; k < n; k++) {
-                sum += GetEntry(a, i+1, k+1) * GetEntry(b, k+1, j+1);
+            for (int k = 1; k <= n; k++) {
+                sum += GetEntry(a, i, k) * GetEntry(b, k, j);
             }
-            SetEntry(c, i+1, j+1, sum);
+            SetEntry(c, i, j, sum);
         }
     }
     return c;
@@ -25,10 +25,34 @@ Matrix* TransposeMatrix (Matrix* m) {
     
     Matrix* mt = CreateMatrix(cols, rows);
 
-    for (int i = 0; i < cols; i++) {
-        for (int j = 0; j < rows; j++) {
-            SetEntry(mt, i+1, j+1, GetEntry(m, j+1, i+1));
+    for (int i = 1; i <= cols; i++) {
+        for (int j = 1; j <= rows; j++) {
+            SetEntry(mt, i, j, GetEntry(m, j, i));
         }
     }
     return mt;
+}
+
+Matrix* SubSquareMatrix(Matrix* m, int row, int col) {
+    int r = Rows(m);
+    int c = Cols(m);
+
+    Matrix* ssm = CreateMatrix(r-1, c-1);
+
+    int RowCounter = 1;
+    int ColCounter = 1;
+
+    for (int i = 1; i <= r; i++) {
+        ColCounter = 1;
+        if (i != row) {
+            for (int j = 1; j <= c; j++) {
+                if (j != col) {
+                    SetEntry(ssm, RowCounter, ColCounter, GetEntry(m, i, j));
+                    ColCounter++;
+                }
+            }
+            RowCounter++;
+        }
+    }
+    return ssm;
 }
