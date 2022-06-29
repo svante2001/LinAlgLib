@@ -72,3 +72,27 @@ double Determinant(Matrix* m) {
         return res;
     }
 }
+
+Matrix* ElementaryRowReplacement(Matrix* m, int i, double x, int j) {
+    for (int k = 1; k <= Cols(m); k++) {
+        SetEntry(m, i, k, (GetEntry(m, i, k) + x * GetEntry(m, j, k)));
+    }
+    return m;
+}
+
+Matrix* ElementaryRowInterchange(Matrix* m, int i, int j) {
+    for (int k = 1; k <= Cols(m); k++) {
+        double first = GetEntry(m, i, k);
+        double second = GetEntry(m, j, k);
+        SetEntry(m, i, k, second);
+        SetEntry(m, j, k, first);
+    }
+    return m;
+}
+
+Matrix* ElementaryRowScaling(Matrix* m, int i, double x) {
+    for (int k = 1; k <= Cols(m); k++) {
+        SetEntry(m, i, k, (x * GetEntry(m, i, k)));
+    }
+    return m;
+}
