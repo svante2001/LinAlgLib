@@ -1,4 +1,5 @@
 #include "../Core/Matrix.h"
+#include <math.h>
 
 Matrix* MatrixProduct(Matrix* a, Matrix* b) {
     int n = Cols(a);
@@ -55,4 +56,19 @@ Matrix* SubSquareMatrix(Matrix* m, int row, int col) {
         }
     }
     return ssm;
+}
+
+double Determinant(Matrix* m) {
+    int r = Rows(m);
+
+    if (r == 1) return GetEntry(m, 1, 1);
+    else if (r == 2) return (GetEntry(m, 1, 1) * GetEntry(m, 2, 2)) - (GetEntry(m, 2, 1) * GetEntry(m, 1, 2));
+    else {
+        double res = 0.0;
+        for (int i = 0; i <= Cols(m); i++) {
+            double cofactor = pow(-1.0, i+1) * GetEntry(m, 1, i) * Determinant(SubSquareMatrix(m, 1, i));
+            res += cofactor;        
+        }
+        return res;
+    }
 }
