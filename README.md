@@ -1,5 +1,5 @@
 # LinAlgLib
-This library is 1 indexed which means the $2 \times 2$ entry of the matrix below is 5.
+This library is $1$ indexed which means the $2 \times 2$ entry of the $3 \times 3$ matrix below is $5$.
 
 $$
 \left(\begin{array}{cc} 
@@ -9,12 +9,8 @@ $$
 \end{array}\right)
 $$ 
 
-## Examples
-A collection of examples can be found in the `Examples` directory. NB: a shell script is present
-to compiling and running the examples and this script should be run in the `Examples` directory as 
-follows:
-<br />
-`./RunExample.sh [ExampleFile].c`
+## Compiling and running
+Run `make` within the project folder.
 
 ## Core matrix functions
 ```c
