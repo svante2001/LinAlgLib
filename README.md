@@ -16,31 +16,21 @@ follows:
 <br />
 `./RunExample.sh [ExampleFile].c`
 
-## Core - matrix
-### Creating a matrix:
-`Matrix* m = CreateMatrix(rows, cols);`
+## Core matrix functions
+```c
+Matrix* CreateMatrix(int n_rows, int m_cols);
+int Rows(Matrix* m);
+int Cols(Matrix* m);
+double GetEntry(Matrix* m, int row, int col);
+void SetEntry(Matrix* m, int row, int col, double value);
+Matrix* SetMatrix(double* arr, int rows, int cols);
+void PrintMatrix(Matrix* m);
+```
 
-### Getting the row size
-`int r = Rows(Matrix* m);`
-
-### Getting the column size
-`int c = Cols(Matrix* m);`
-
-### Getting an entry:
-`double d = GetEntry(Matrix* m, int row, int col);`
-
-### Setting an entry:
-`SetEntry(Matrix* m, int row, int col, double value);`
-
-### Setting a matrix:
-`Matrix* m = SetMatrix(double* arr, int rows, int cols);`
-
-### Printing a matrix
-`PrintMatrix(Matrix* m);`
-
-## Matrix operations
-### Matrix product
-`Matrix* m = MatrixProduct(Matrix* a, Matrix* b);`
-
-### Transpose matrix
-`Matrix* m = TransposeMatrix (Matrix* m);`
+## Matrix operation functions
+```c
+Matrix* MatrixProduct(Matrix* a, Matrix* b);
+Matrix* TransposeMatrix(Matrix* m);
+Matrix* SubSquareMatrix(Matrix* m, int row, int col);
+double Determinant(Matrix* m);
+```
