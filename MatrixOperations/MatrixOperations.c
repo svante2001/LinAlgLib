@@ -124,3 +124,40 @@ Matrix* ForwardReduction(Matrix* m) {
     }
     return m;
 }
+
+// Beware: This method is flawed in some edge cases.
+Matrix* BackwardReduction(Matrix* m) {
+    int r = Rows(m)-1;
+    int c = Cols(m)-1;
+
+    for (int i = c; Cols(m)-1 >= 1; i--) {
+        if (GetEntry(m, Rows(m)-1, i-1) == 0.0 && GetEntry(m, Rows(m)-1, i) != 0.0) {
+            c = i;
+            break;
+        }
+    }
+
+    while (c >= 1) {
+        while (r >= 1) {
+            if (GetEntry(m, r, c) != 0.0) {
+                ElementaryRowScaling(m, r, (1.0 / GetEntry(m, r, c)));
+                for (int j = 1; j < r; j++) {
+                    if (GetEntry(m, j, c) != 0.0) {
+                        ElementaryRowReplacement(m, j, (-GetEntry(m, j, c)), r);
+                    }
+                }
+                r--;
+                c--;
+            } else {
+                if (r > 2) {
+                    r--;
+                } else {
+                    c--;
+                }
+            }
+            if (c < 1) break;
+        }
+        c--;
+    }
+    return m;
+}
