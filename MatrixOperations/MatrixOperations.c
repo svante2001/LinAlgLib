@@ -1,6 +1,9 @@
 #include "../Core/Matrix.h"
 #include <math.h>
 
+// A boolean type is needed.
+typedef enum { False, True } boolean;
+
 Matrix* MatrixProduct(Matrix* a, Matrix* b) {
     int n = Cols(a);
     int m = Rows(a);
@@ -65,8 +68,8 @@ double Determinant(Matrix* m) {
     else if (r == 2) return (GetEntry(m, 1, 1) * GetEntry(m, 2, 2)) - (GetEntry(m, 2, 1) * GetEntry(m, 1, 2));
     else {
         double res = 0.0;
-        for (int i = 0; i <= Cols(m); i++) {
-            double cofactor = pow(-1.0, i+1) * GetEntry(m, 1, i) * Determinant(SubSquareMatrix(m, 1, i));
+        for (int i = 1; i <= Cols(m); i++) {
+            double cofactor = pow(-1.0, i) * GetEntry(m, 1, i) * Determinant(SubSquareMatrix(m, 1, i));
             res += cofactor;        
         }
         return res;
@@ -93,6 +96,31 @@ Matrix* ElementaryRowInterchange(Matrix* m, int i, int j) {
 Matrix* ElementaryRowScaling(Matrix* m, int i, double x) {
     for (int k = 1; k <= Cols(m); k++) {
         SetEntry(m, i, k, (x * GetEntry(m, i, k)));
+    }
+    return m;
+}
+
+Matrix* ForwardReduction(Matrix* m) {
+    int r = Rows(m);
+    int c = Cols(m);
+
+    for (int a = 1; a <= r-1; a++) {
+        for (int j = a; j <= c; j++) {
+            boolean foundPivot = False;
+            for (int i = a; i <= r; i++) {
+                if (GetEntry(m, i, j) != 0.0) {
+                    foundPivot = True;
+                    ElementaryRowInterchange(m, i, a);
+                    for (int b = a+1; b <= r; b++) {
+                        if (GetEntry(m, b, j) != 0.0) {
+                            ElementaryRowReplacement(m, b, (-GetEntry(m, b, j) / GetEntry(m, a, j)), a);
+                        }
+                    }
+                    break;
+                }
+            }
+            if (foundPivot == True) break;
+        }
     }
     return m;
 }

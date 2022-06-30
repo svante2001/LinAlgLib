@@ -5,3 +5,4 @@ double Determinant(Matrix* m);
 Matrix* ElementaryRowReplacement(Matrix* m, int i, double x, int j);
 Matrix* ElementaryRowInterchange(Matrix* m, int i, int j);
 Matrix* ElementaryRowScaling(Matrix* m, int i, double x);
+Matrix* ForwardReduction(Matrix* m);
