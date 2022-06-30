@@ -161,3 +161,7 @@ Matrix* BackwardReduction(Matrix* m) {
     }
     return m;
 }
+
+Matrix* GaussianElimination(Matrix* m) {
+    return BackwardReduction(ForwardReduction(m));
+}

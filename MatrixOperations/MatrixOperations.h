@@ -7,3 +7,4 @@ Matrix* ElementaryRowInterchange(Matrix* m, int i, int j);
 Matrix* ElementaryRowScaling(Matrix* m, int i, double x);
 Matrix* ForwardReduction(Matrix* m);
 Matrix* BackwardReduction(Matrix* m);
+Matrix* GaussianElimination(Matrix* m);
