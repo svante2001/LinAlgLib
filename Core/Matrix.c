@@ -20,6 +20,14 @@ Matrix* CreateMatrix(int n_rows, int m_cols) {
     return matrix;
 }
 
+void FreeMatrix(Matrix* m) {
+    for(int i = 0; i < m->rows; i++) {
+        free((double*)m->entry[i]);
+    }
+    free((double**)m->entry);
+    free((Matrix*)m);
+}
+
 int Rows(Matrix* m) {
     return m->rows;
 }
