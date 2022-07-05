@@ -1,8 +1,9 @@
 #include "../Core/Matrix.h"
 #include <math.h>
+#include <stdio.h>
 
 // A boolean type is needed.
-typedef enum { False, True } boolean;
+typedef enum { False = 0, True = 1 } boolean;
 
 Matrix* MatrixProduct(Matrix* a, Matrix* b) {
     int n = Cols(a);
@@ -100,7 +101,7 @@ Matrix* ElementaryRowScaling(Matrix* m, int i, double x) {
     return m;
 }
 
-Matrix* ForwardReduction(Matrix* m) {
+Matrix* GaussianElimination(Matrix* m) {
     int r = Rows(m);
     int c = Cols(m);
 
@@ -119,49 +120,36 @@ Matrix* ForwardReduction(Matrix* m) {
                     break;
                 }
             }
-            if (foundPivot == True) break;
+            if (foundPivot) break;
         }
     }
     return m;
 }
 
-// Beware: This method is flawed in some edge cases.
 Matrix* BackwardReduction(Matrix* m) {
-    int r = Rows(m)-1;
-    int c = Cols(m)-1;
+    int nrows = Rows(m);
+    int ncols = Cols(m);
+    int lead = 1;
 
-    for (int i = c; Cols(m)-1 >= 1; i--) {
-        if (GetEntry(m, Rows(m)-1, i-1) == 0.0 && GetEntry(m, Rows(m)-1, i) != 0.0) {
-            c = i;
-            break;
-        }
-    }
+    while (lead <= nrows) {
+        float s, t;
+        for (int r = 1; r <= nrows; r++) {
+            s = GetEntry(m, lead, lead);
+            t = GetEntry(m, r, lead) / GetEntry(m, lead, lead);
 
-    while (c >= 1) {
-        while (r >= 1) {
-            if (GetEntry(m, r, c) != 0.0) {
-                ElementaryRowScaling(m, r, (1.0 / GetEntry(m, r, c)));
-                for (int j = 1; j < r; j++) {
-                    if (GetEntry(m, j, c) != 0.0) {
-                        ElementaryRowReplacement(m, j, (-GetEntry(m, j, c)), r);
-                    }
-                }
-                r--;
-                c--;
-            } else {
-                if (r > 2) {
-                    r--;
+            for (int c = 1; c <= ncols; c++) {
+                if (r == lead) {
+                    SetEntry(m, r, c, (GetEntry(m, r, c)) / s);
                 } else {
-                    c--;
+                    SetEntry(m, r, c, (GetEntry(m, r, c) - GetEntry(m, lead, c) * t));
                 }
             }
-            if (c < 1) break;
         }
-        c--;
+        lead++;
     }
     return m;
 }
 
-Matrix* GaussianElimination(Matrix* m) {
-    return BackwardReduction(ForwardReduction(m));
+Matrix* RREF(Matrix* m) {
+    return BackwardReduction(GaussianElimination(m));
 }
