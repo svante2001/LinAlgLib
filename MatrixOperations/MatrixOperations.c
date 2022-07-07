@@ -153,3 +153,23 @@ Matrix* BackwardReduction(Matrix* m) {
 Matrix* RREF(Matrix* m) {
     return BackwardReduction(GaussianElimination(m));
 }
+
+Matrix* InverseMatrix(Matrix* m) {
+    int r = Rows(m);
+    int c = Cols(m);
+    Matrix* InvertedMatrix = CreateMatrix(r, c);
+
+    for (int i = 1; i <= r; i++) {
+        Vector* v = CreateStandardVector(r, i);
+        m = AugmentVectorRight(m, v);
+    }
+    RREF(m);
+
+    for (int i = 1; i <= r; i++) {
+        for (int j = 1; j <= c; j++) {
+            SetEntry(InvertedMatrix, i, j, GetEntry(m, i, j+c));
+        }
+    }
+
+    return InvertedMatrix;
+}

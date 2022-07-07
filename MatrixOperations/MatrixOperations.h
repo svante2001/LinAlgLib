@@ -8,3 +8,4 @@ Matrix* ElementaryRowScaling(Matrix* m, int i, double x);
 Matrix* GaussianElimination(Matrix* m);
 Matrix* BackwardReduction(Matrix* m);
 Matrix* RREF(Matrix* m);
+Matrix* InverseMatrix(Matrix* m);
