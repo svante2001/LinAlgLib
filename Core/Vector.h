@@ -4,6 +4,7 @@
 typedef struct Vector Vector;
 
 Vector* CreateVector(int h);
+void FreeVector(Vector* v);
 void PrintVector(Vector* v);
 
 #endif

@@ -15,6 +15,11 @@ Vector* CreateVector(int h) {
     return vector;
 }
 
+void FreeVector(Vector* v) {
+    free((double*)v->element);
+    free((Vector*)v);
+}
+
 void PrintVector(Vector* v) {
     printf("\n");
     for (int i = 0; i < v->height; i++) {
