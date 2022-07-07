@@ -12,7 +12,8 @@ $$
 ## Compiling and running
 Run `make` within the project folder.
 
-## Core matrix functions
+## Core functions
+### Matrix
 ```c
 Matrix* CreateMatrix(int n_rows, int m_cols);
 int Rows(Matrix* m);
@@ -21,6 +22,16 @@ double GetEntry(Matrix* m, int row, int col);
 void SetEntry(Matrix* m, int row, int col, double value);
 Matrix* SetMatrix(double* arr, int rows, int cols);
 void PrintMatrix(Matrix* m);
+```
+### Vector
+```c
+Vector* CreateVector(int h);
+void FreeVector(Vector* v);
+int Height(Vector* v);
+double GetElement(Vector* v, int index);
+void SetElement(Vector* v, int index, double value);
+Vector* SetVector(double* arr, int height);
+void PrintVector(Vector* v);
 ```
 
 ## Matrix operation functions
@@ -33,6 +44,5 @@ Matrix* ElementaryRowReplacement(Matrix* m, int i, double x, int j);
 Matrix* ElementaryRowInterchange(Matrix* m, int i, int j);
 Matrix* ElementaryRowScaling(Matrix* m, int i, double x);
 Matrix* GaussianElimination(Matrix* m);
-Matrix* BackwardReduction(Matrix* m);
 Matrix* RREF(Matrix* m);
 ```
