@@ -9,6 +9,7 @@ int Height(Vector* v);
 double GetElement(Vector* v, int index);
 void SetElement(Vector* v, int index, double value);
 Vector* SetVector(double* arr, int height);
+Vector* CreateStandardVector(int height, int dimension);
 void PrintVector(Vector* v);
 
 #endif

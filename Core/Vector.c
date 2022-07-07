@@ -40,6 +40,12 @@ Vector* SetVector(double* arr, int height) {
     return v;
 }
 
+Vector* CreateStandardVector(int height, int dimension) {
+    Vector* v = CreateVector(height);
+    SetElement(v, dimension, 1.0);
+    return v;
+}
+
 void PrintVector(Vector* v) {
     printf("\n");
     for (int i = 0; i < v->height; i++) {
