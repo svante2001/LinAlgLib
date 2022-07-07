@@ -45,4 +45,5 @@ Matrix* ElementaryRowInterchange(Matrix* m, int i, int j);
 Matrix* ElementaryRowScaling(Matrix* m, int i, double x);
 Matrix* GaussianElimination(Matrix* m);
 Matrix* RREF(Matrix* m);
+Matrix* InverseMatrix(Matrix* m);
 ```
