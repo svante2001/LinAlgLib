@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Vector.h"
 
 struct Matrix {
     int rows;
@@ -52,6 +53,19 @@ Matrix* SetMatrix(double* arr, int rows, int cols) {
         }
     }
     return m;
+}
+
+Matrix* AugmentVectorRight(Matrix* m, Vector* v) {
+    Matrix* AugmentedMatrix = CreateMatrix(Rows(m), Cols(m) + 1);
+    for (int i = 1; i <= Rows(m); i++) {
+        for (int j = 1; j <= Cols(m); j++) {
+            SetEntry(AugmentedMatrix, i, j, GetEntry(m, i, j));
+        }
+    }
+    for (int i = 1; i <= Height(v); i++) {
+        SetEntry(AugmentedMatrix, i, Cols(m)+1, GetElement(v, i));
+    }
+    return AugmentedMatrix;
 }
 
 void PrintMatrix(Matrix* m) {
