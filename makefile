@@ -1,3 +1,3 @@
 all:
-	gcc main.c ./Core/Matrix.c ./MatrixOperations/MatrixOperations.c -lm
+	gcc main.c ./Core/Matrix.c ./Core/Vector.c ./MatrixOperations/MatrixOperations.c -lm
 	./a.out
