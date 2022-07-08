@@ -12,7 +12,7 @@ $$
 ## Compiling and running
 Run `make` within the project folder.
 
-## Core functions
+## Core
 ### Matrix
 ```c
 Matrix* CreateMatrix(int n_rows, int m_cols);
@@ -34,7 +34,7 @@ Vector* SetVector(double* arr, int height);
 void PrintVector(Vector* v);
 ```
 
-## Matrix operation functions
+## Matrix operations
 ```c
 Matrix* MatrixProduct(Matrix* a, Matrix* b);
 Matrix* TransposeMatrix(Matrix* m);
@@ -46,4 +46,10 @@ Matrix* ElementaryRowScaling(Matrix* m, int i, double x);
 Matrix* GaussianElimination(Matrix* m);
 Matrix* RREF(Matrix* m);
 Matrix* InverseMatrix(Matrix* m);
+```
+
+## Regression
+```c
+Matrix* LinearRegression(double x[], double y[], int points);
+Matrix* PolynomialRegression(double x[], double y[], int dimension);
 ```
