@@ -155,6 +155,8 @@ Matrix* RREF(Matrix* m) {
 }
 
 Matrix* InverseMatrix(Matrix* m) {
+    if (Determinant(m) == 0.0) return NULL;
+
     int r = Rows(m);
     int c = Cols(m);
     Matrix* InvertedMatrix = CreateMatrix(r, c);
