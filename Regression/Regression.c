@@ -24,7 +24,7 @@ void PrintMatrixEquation(Matrix* m) {
     for (int i = 1; i < Rows(m)+1; i++) {
         double c = GetEntry(m, i, 1);
 
-        if (fabs(c-0.0) > 0.0001) {
+        if (fabs(c) > 0.0001) {
             if (i == 1) {
                 printf("%f", c);
             } else if (i == 2) {
