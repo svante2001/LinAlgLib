@@ -1,9 +1,7 @@
 #include "../Core/Matrix.h"
 #include <math.h>
 #include <stdio.h>
-
-// A boolean type is needed.
-typedef enum { False = 0, True = 1 } boolean;
+#include <stdbool.h>
 
 Matrix* MatrixProduct(Matrix* a, Matrix* b) {
     int n = Cols(a);
@@ -107,10 +105,10 @@ Matrix* GaussianElimination(Matrix* m) {
 
     for (int a = 1; a <= r-1; a++) {
         for (int j = a; j <= c; j++) {
-            boolean foundPivot = False;
+            bool foundPivot = false;
             for (int i = a; i <= r; i++) {
                 if (GetEntry(m, i, j) != 0.0) {
-                    foundPivot = True;
+                    foundPivot = true;
                     ElementaryRowInterchange(m, i, a);
                     for (int b = a+1; b <= r; b++) {
                         if (GetEntry(m, b, j) != 0.0) {
