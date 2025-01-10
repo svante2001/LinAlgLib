@@ -3,7 +3,11 @@
 #ifndef _MATRIX_H
 #define _MATRIX_H
 
-typedef struct Matrix Matrix;
+typedef struct {
+    int rows;
+    int cols;
+    double **entry;
+} Matrix;
 
 Matrix* CreateMatrix(int n_rows, int m_cols);
 void FreeMatrix(Matrix* m);
